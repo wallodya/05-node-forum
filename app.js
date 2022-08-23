@@ -4,18 +4,12 @@ const port = 80
 const http = require('http')
 const express = require('express')
 const res = require('express/lib/response')
-const nStatic = require('node-static')
-const fileServer = new nStatic.Server('./public')
-
-
-
-// const path = require('path')
-// const app = express()
-// app.use(express.static('/public'))
+const app = express()
+app.use(express.static('public'))
 // app.use(express.static(path.join(__dirname, 'public')));
 
 let header = `<header>
-              <img src="/svg/logo.svg" alt="">
+              <img src="/css/svg/logo.svg" alt="">
               <a href="/home">
                   Home
               </a>
@@ -77,63 +71,55 @@ const createPage = (content) => {
                 </head>
                 <body>
                 ${header}
+                <div class="main-container">
                 ${content}
+                </div>
                 ${footer}
                 </body
                 </html>`
+    return page
 }
 
-const server = http.createServer((req, res) => {
-    fileServer.serve(req, res)
-    let mainContent
-    if (req.method == 'GET') {
-        switch (req.url) {
-            case ('/home' || '/'): {
-                res.statusCode = 200
-                mainContent = `<div class="image-container banner">
-                               <h1>Home</h1>
-                               </div>`
-                createPage(mainContent)
-                break
-            }
-            case '/forum': {
-                res.statusCode =200
-                mainContent = `<div class="image-container banner">
-                               <h1>Forum</h1>
-                               </div>`
-                createPage(mainContent)
-                break
-            }
-            case '/london': {   
-                res.statusCode = 200
-                mainContent = `<div class="image-container banner">
-                               <h1>London</h1>
-                               </div>`
-                createPage(mainContent)
-                break
-            }
-            case '/paris': {
-                res.statusCode = 200
-                mainContent = `<div class="image-container banner">
-                               <h1>Paris</h1>
-                               </div>`
-                createPage(mainContent)
-                break
-            }
-            default: {
-                res.statusCode = 200
-                mainContent = `<div class="image-container banner">
-                               <h1>${req.url} is not a page</h1>
-                               </div>`
-                createPage(mainContent)
-            }
-        }
-        res.end(page)
-    }
+app.get('/home', (req, res) => {
+    res.status(200)
+    mainContent = `<div class="image-container banner">
+                    <h1>Home</h1>
+                    </div>`
+    res.send(createPage(mainContent))
 })
 
-console.log('test log')
+app.get('/home', (req, res) => {
+    res.status(200)
+    mainContent = `<div class="image-container banner">
+                    <h1>Home</h1>
+                    </div>`
+    res.send(createPage(mainContent))
+})
 
-server.listen(port, host, () => {
+app.get('/forum', (req, res) => {
+    res.status(200)
+    mainContent = `<div class="image-container banner">
+                    <h1>Forum</h1>
+                    </div>`
+    res.send(createPage(mainContent))
+})
+
+app.get('/london', (req, res) => {
+    res.status(200)
+    mainContent = `<div class="image-container banner">
+                    <h1>London</h1>
+                    </div>`
+    res.send(createPage(mainContent))
+})
+
+app.get('/paris', (req, res) => {
+    res.status(200)
+    mainContent = `<div class="image-container banner">
+                    <h1>Paris</h1>
+                    </div>`
+    res.send(createPage(mainContent))
+})
+
+app.listen(port, host, () => {
     console.log(`Listening to ${host}, ${port}`)
 })

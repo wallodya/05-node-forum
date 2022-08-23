@@ -116,7 +116,7 @@ header button:hover {
 }
 
 .image-container {
-    background: url(../img/banner.jpg) no-repeat;
+    background: url(../css/img/banner.jpg) no-repeat;
     /* background-attachment: fixed; */
     background-size: cover;
     background-position: bottom;
