@@ -42,11 +42,12 @@ ul {
 }
 
 header {
+    position: relative;
     width: 100%;
     height: 5rem;
-    
+    overflow: visible;
     display: flex;
-    box-shadow: 0 0 8px var(--clr-accent);
+    box-shadow: 0 0 2px var(--clr-accent);
 }
 
 header > * {
@@ -96,7 +97,7 @@ header button {
     font-size: 0.8rem;
     text-transform: capitalize;
     padding: 0.5em 2em;
-    border: 2px solid var(--clr-white);
+    border: 2px solid var(--clr-accent);
     border-radius: 50px;
     box-shadow: 8px 2px 8px #000000,
                -8px -2px 8px #F7CE6840,
@@ -116,7 +117,7 @@ header button:hover {
 }
 
 .image-container {
-    background: url(../css/img/banner.jpg) no-repeat;
+    background: url(/img/banner.jpg) no-repeat;
     /* background-attachment: fixed; */
     background-size: cover;
     background-position: bottom;

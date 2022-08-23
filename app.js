@@ -4,63 +4,26 @@ const port = 80
 const http = require('http')
 const express = require('express')
 const res = require('express/lib/response')
+const fs = require('fs')
 const app = express()
 app.use(express.static('public'))
-// app.use(express.static(path.join(__dirname, 'public')));
 
-let header = `<header>
-              <img src="/css/svg/logo.svg" alt="">
-              <a href="/home">
-                  Home
-              </a>
-              <a href="/forum">
-                  Forum
-              </a>
-              <a href="/london">
-                  London
-              </a>
-              <a href="/paris">
-                  Paris
-              </a>
-              <div class="button-container"><button>LOGIN</button></div>
-              </header>`
-let footer = `<footer>
-              <ul>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-              </ul>
-              <ul>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-              </ul>
-              <ul>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-              </ul>
-              <ul>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-                  <li>Page</li>
-              </ul>
-              </footer>`
-let page
+let header = ''
+let footer = ''
+
+fs.readFile('./public/html/header.html', (err, data) =>{
+    if (err) {throw err}
+    header = data
+})
+
+fs.readFile('./public/html/footer.html', (err, data) =>{
+    if (err) {throw err}
+    footer = data
+})
+
+
 const createPage = (content) => {
-    page = `<!DOCTYPE html>
+    let page = `<!DOCTYPE html>
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
@@ -82,42 +45,42 @@ const createPage = (content) => {
 
 app.get('/home', (req, res) => {
     res.status(200)
-    mainContent = `<div class="image-container banner">
-                    <h1>Home</h1>
-                    </div>`
-    res.send(createPage(mainContent))
+    fs.readFile('./public/html/pages/home.html', (err, data) =>{
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
 })
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200)
-    mainContent = `<div class="image-container banner">
-                    <h1>Home</h1>
-                    </div>`
-    res.send(createPage(mainContent))
+    fs.readFile('./public/html/pages/home.html', (err, data) => {
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
 })
 
 app.get('/forum', (req, res) => {
     res.status(200)
-    mainContent = `<div class="image-container banner">
-                    <h1>Forum</h1>
-                    </div>`
-    res.send(createPage(mainContent))
+    fs.readFile('./public/html/pages/forum.html', (err, data) => {
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
 })
 
 app.get('/london', (req, res) => {
     res.status(200)
-    mainContent = `<div class="image-container banner">
-                    <h1>London</h1>
-                    </div>`
-    res.send(createPage(mainContent))
+    fs.readFile('./public/html/pages/london.html', (err, data) => {
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
 })
 
 app.get('/paris', (req, res) => {
     res.status(200)
-    mainContent = `<div class="image-container banner">
-                    <h1>Paris</h1>
-                    </div>`
-    res.send(createPage(mainContent))
+    fs.readFile('./public/html/pages/paris.html', (err, data) => {
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
 })
 
 app.listen(port, host, () => {
