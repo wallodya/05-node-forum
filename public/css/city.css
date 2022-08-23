@@ -1,0 +1,59 @@
+.main-photo {
+    width: 100%;
+    position: relative;
+    filter: sepia(.8);
+}
+
+.london-photo {
+    filter: none
+}
+
+.content-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    position: absolute;
+    margin: auto; 
+    height: max-content;
+    padding: 2rem 3rem;
+    background-color: var(--clr-gray);
+    border-radius: 1rem;
+}
+
+.content > p {
+    width: 40ch;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    color: var(--clr-accent);
+    margin-bottom: 2em;
+}
+
+.content button {
+    color: var(--clr-black);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    padding: 0.5em 2em;
+    border: 2px solid var(--clr-accent);
+    border-radius: 50px;
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #F7CE6840,
+               inset 2px 2px 2px #24242440,
+               inset -2px -2px 2px #F7CE6840;
+    transition: all 300ms ease-in-out;
+    background-color: #FBAB7E;
+    background-image: var(--gradient);
+;
+}
+
+.content button:hover {
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #F7CE6840,
+               inset 2px 3px 4px #24242450,
+               inset -4px -2px 4px #F7CE6840;
+}

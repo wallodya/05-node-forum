@@ -31,6 +31,7 @@ const createPage = (content) => {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Node test</title>
                     <link rel="stylesheet" type="text/css" href="/css/style.css">
+                    <link rel="stylesheet" type="text/css" href="/css/city.css">
                 </head>
                 <body>
                 ${header}
@@ -78,6 +79,14 @@ app.get('/london', (req, res) => {
 app.get('/paris', (req, res) => {
     res.status(200)
     fs.readFile('./public/html/pages/paris.html', (err, data) => {
+        if (err) {throw err}
+        res.send(createPage(data))
+    })
+})
+
+app.get('*', (req, res) => {
+    res.status(200)
+    fs.readFile('./public/html/pages/404.html', (err, data) => {
         if (err) {throw err}
         res.send(createPage(data))
     })
