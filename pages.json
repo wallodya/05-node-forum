@@ -7,6 +7,22 @@
         "bigFooter" : true,
         "userOnly" : false
     },
+    "/" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/home.html",
+        "title" : "Home",
+        "bigFooter" : true,
+        "userOnly" : false
+    },
+    "" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/home.html",
+        "title" : "Home",
+        "bigFooter" : true,
+        "userOnly" : false
+    },
     "/forum" : {
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",

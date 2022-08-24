@@ -91,7 +91,7 @@ header a:hover::after {
     top: 0;
 }
 
-header button {
+.neomorph {
     color: var(--clr-black);
     font-weight: bold;
     font-size: 0.8rem;
@@ -103,13 +103,10 @@ header button {
                -8px -2px 8px #F7CE6840,
                inset 2px 2px 2px #24242440,
                inset -2px -2px 2px #F7CE6840;
-    transition: all 300ms ease-in-out;
-    background-color: #FBAB7E;
-    background-image: var(--gradient);
-;
+    background-image: var(--gradient)
 }
 
-header button:hover {
+.neomorph:hover {
     box-shadow: 8px 2px 8px #000000,
                -8px -2px 8px #F7CE6840,
                inset 2px 3px 4px #24242450,
@@ -151,4 +148,18 @@ footer {
     color: var(--clr-accent);
     font-weight: bold;
     font-size: 0.8rem;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.input-form input {
+    color: var(--clr-white);
+    border-radius: 4px;
+    background: none;
+    background-color: var(--clr-gray);
 }

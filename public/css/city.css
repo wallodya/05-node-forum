@@ -34,26 +34,5 @@
 }
 
 .content button {
-    color: var(--clr-black);
-    font-weight: bold;
     font-size: 1.2rem;
-    text-transform: capitalize;
-    padding: 0.5em 2em;
-    border: 2px solid var(--clr-accent);
-    border-radius: 50px;
-    box-shadow: 8px 2px 8px #000000,
-               -8px -2px 8px #F7CE6840,
-               inset 2px 2px 2px #24242440,
-               inset -2px -2px 2px #F7CE6840;
-    transition: all 300ms ease-in-out;
-    background-color: #FBAB7E;
-    background-image: var(--gradient);
-;
-}
-
-.content button:hover {
-    box-shadow: 8px 2px 8px #000000,
-               -8px -2px 8px #F7CE6840,
-               inset 2px 3px 4px #24242450,
-               inset -4px -2px 4px #F7CE6840;
 }
