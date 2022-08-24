@@ -32,6 +32,7 @@ const createPage = (content) => {
                     <title>Souta</title>
                     <link rel="stylesheet" type="text/css" href="/css/style.css">
                     <link rel="stylesheet" type="text/css" href="/css/city.css">
+                    <link rel="stylesheet" type="text/css" href="/css/404.css">
                 </head>
                 <body>
                 ${header}
@@ -43,6 +44,19 @@ const createPage = (content) => {
                 </html>`
     return page
 }
+
+const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
+
+app.get(imageRegex, (req, res) => {
+    res.status(200)
+    fs.readFile(`./public/img${req.url}`, (err, data) => {
+        if (err) {
+            res.send('<h1>No such image</h1>')
+        } else{
+            res.send(`<img src="/img${req.url}" alt="some image">`)
+        }
+    })
+})
 
 app.get('/home', (req, res) => {
     res.status(200)
