@@ -1,32 +1,23 @@
 const moreButtons = [...document.getElementsByClassName('more-button')]
 const rollouts = document.getElementsByClassName('content-rollout')
-console.log(moreButtons)
 
 const rollout = () => {
     for (let i = 0; i < rollouts.length; i++) {
-        // rollouts[i].style.transition = '300ms'
-        // rollouts[i].style.display = 'block'
-        setTimeout(() => {
-            rollouts[i].style.display = 'block'
-        }, 1)
+        rollouts[i].style.transition = 'all 300ms ease-in'
+        rollouts[i].style.height = 'fit-content'
     }
-    setTimeout(() => {
-        for (let i = 0; i < moreButtons.length; i++) {
-            moreButtons[i].innerText = 'LESS'
-            moreButtons[i].onclick = () => {
-                setTimeout(() => {rollin()}, 1)
-            }
+    for (let i = 0; i < moreButtons.length; i++) {
+        moreButtons[i].innerText = 'LESS'
+        moreButtons[i].onclick = () => {
+           rollin()}
         }
-    }, 300)
 }
+
 
 const rollin = () => {
     for (let i = 0; i < rollouts.length; i++) {
-        // rollouts[i].style.transition = '300ms'
-        // rollouts[i].style.display = 'none'
-        setTimeout(() => {
-                    rollouts[i].style.display = 'none'
-        }, 1)
+        rollouts[i].style.transition = 'all 300ms ease-in'
+        rollouts[i].style.height = '0'
     }
     for (let i = 0; i < moreButtons.length; i++) {
         moreButtons[i].innerText = 'MORE'

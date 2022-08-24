@@ -5,8 +5,12 @@ const http = require('http')
 const express = require('express')
 const res = require('express/lib/response')
 const fs = require('fs')
+const bodyParser =require('body-parser')
+const urlencodedParser = express.urlencoded({extended: false})
 const app = express()
-app.use(express.static('public'))
+
+// app.use(bodyParser.json())
+// app.use(express.urlencoded({extended: true}))
 
 let header = ''
 let footer = ''
@@ -60,7 +64,9 @@ for (let address in PAGES) {
                     <link rel="stylesheet" type="text/css" href="/css/style.css">
                     <link rel="stylesheet" type="text/css" href="/css/city.css">
                     <link rel="stylesheet" type="text/css" href="/css/404.css">
+                    <link rel="stylesheet" type="text/css" href="/css/forum.css">
                     <script src="/js/rollout.js" defer></script>
+                    <script src="/js/forum.js" defer></script>
                 </head>
                 <body>
                 ${header}
@@ -74,6 +80,10 @@ for (let address in PAGES) {
         })
     })
 }
+
+app.post('/message', urlencodedParser, (req, res) => {
+    console.log(req.body)
+})
 
 app.listen(port, host, () => {
     console.log(`Listening to ${host}, ${port}`)

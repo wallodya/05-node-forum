@@ -37,8 +37,10 @@
     font-size: 1.2rem;
 }
 
-/* .content-rollout {
-
-    transition: all 300ms ease-in-out;
-} */
+.content-rollout {
+    margin-bottom: 0;
+    overflow: hidden;
+    height: 0;
+    /* transition: all 300ms ease-in-out; */
+}
 
