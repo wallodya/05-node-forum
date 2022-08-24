@@ -29,7 +29,6 @@ app.get(imageRegex, (req, res) => {
 
 //Getting requests for urls
 for (let address in PAGES) {
-    console.log(PAGES[address]["content"])
     app.get(address, (req, res) => {
         res.status(200)
 
@@ -61,6 +60,7 @@ for (let address in PAGES) {
                     <link rel="stylesheet" type="text/css" href="/css/style.css">
                     <link rel="stylesheet" type="text/css" href="/css/city.css">
                     <link rel="stylesheet" type="text/css" href="/css/404.css">
+                    <script src="/js/rollout.js" defer></script>
                 </head>
                 <body>
                 ${header}

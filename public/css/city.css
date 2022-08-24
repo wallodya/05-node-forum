@@ -33,6 +33,12 @@
     margin-bottom: 2em;
 }
 
-.content button {
+.content label button {
     font-size: 1.2rem;
 }
+
+/* .content-rollout {
+
+    transition: all 300ms ease-in-out;
+} */
+
