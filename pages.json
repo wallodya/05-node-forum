@@ -1,0 +1,42 @@
+{
+    "/home" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/home.html",
+        "title" : "Home",
+        "bigFooter" : true,
+        "userOnly" : false
+    },
+    "/forum" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/forum.html",
+        "title" : "Forum",
+        "bigFooter" : false,
+        "userOnly" : false
+    },
+    "/london" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/london.html",
+        "title" : "London",
+        "bigFooter" : false,
+        "userOnly" : false
+    },
+    "/paris" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/paris.html",
+        "title" : "Paris",
+        "bigFooter" : false,
+        "userOnly" : false
+    },
+    "*" : {
+        "header" : "./public/html/header.html",
+        "footer" : "./public/html/footer.html",
+        "content": "./public/html/pages/404.html",
+        "title" : "404",
+        "bigFooter" : false,
+        "userOnly" : false
+    }
+}

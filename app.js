@@ -10,41 +10,10 @@ app.use(express.static('public'))
 
 let header = ''
 let footer = ''
+const PAGES = require('./pages.json')
+const { Console } = require('console')
 
-fs.readFile('./public/html/header.html', (err, data) =>{
-    if (err) {throw err}
-    header = data
-})
-
-fs.readFile('./public/html/footer.html', (err, data) =>{
-    if (err) {throw err}
-    footer = data
-})
-
-
-const createPage = (content) => {
-    let page = `<!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Souta</title>
-                    <link rel="stylesheet" type="text/css" href="/css/style.css">
-                    <link rel="stylesheet" type="text/css" href="/css/city.css">
-                    <link rel="stylesheet" type="text/css" href="/css/404.css">
-                </head>
-                <body>
-                ${header}
-                <div class="main-container">
-                ${content}
-                </div>
-                ${footer}
-                </body
-                </html>`
-    return page
-}
-
+// Getting requests for images 
 const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
 
 app.get(imageRegex, (req, res) => {
@@ -58,53 +27,53 @@ app.get(imageRegex, (req, res) => {
     })
 })
 
-app.get('/home', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/home.html', (err, data) =>{
-        if (err) {throw err}
-        res.send(createPage(data))
-    })
-})
+//Getting requests for urls
+for (let address in PAGES) {
+    console.log(PAGES[address]["content"])
+    app.get(address, (req, res) => {
+        res.status(200)
 
-app.get('/', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/home.html', (err, data) => {
-        if (err) {throw err}
-        res.send(createPage(data))
-    })
-})
+        fs.readFile(PAGES[address]["header"], (err, data) =>{
+            if (err) {throw err}
+            header = data
+        })
 
-app.get('/forum', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/forum.html', (err, data) => {
-        if (err) {throw err}
-        res.send(createPage(data))
+        if (PAGES[address]["bigFooter"]) {
+            fs.readFile('./public/html/big_footer.html', (err, data) => {
+                if (err) {throw err}
+                footer = data
+            })
+        } else {
+            fs.readFile(PAGES[address]["footer"], (err, data) =>{
+                if (err) {throw err}
+                footer = data
+            })
+        }
+        fs.readFile(PAGES[address]["content"], (err, data) => {
+            if (err) { throw err}
+            let page = `<!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>${PAGES[address]["title"]}</title>
+                    <link rel="stylesheet" type="text/css" href="/css/style.css">
+                    <link rel="stylesheet" type="text/css" href="/css/city.css">
+                    <link rel="stylesheet" type="text/css" href="/css/404.css">
+                </head>
+                <body>
+                ${header}
+                <div class="main-container">
+                ${data}
+                </div>
+                ${footer}
+                </body
+                </html>`
+            res.send(page)
+        })
     })
-})
-
-app.get('/london', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/london.html', (err, data) => {
-        if (err) {throw err}
-        res.send(createPage(data))
-    })
-})
-
-app.get('/paris', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/paris.html', (err, data) => {
-        if (err) {throw err}
-        res.send(createPage(data))
-    })
-})
-
-app.get('*', (req, res) => {
-    res.status(200)
-    fs.readFile('./public/html/pages/404.html', (err, data) => {
-        if (err) {throw err}
-        res.send(createPage(data))
-    })
-})
+}
 
 app.listen(port, host, () => {
     console.log(`Listening to ${host}, ${port}`)
