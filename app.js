@@ -8,8 +8,8 @@ const fs = require('fs')
 // const bodyParser =require('body-parser')
 const urlencodedParser = express.urlencoded({extended: false})
 const app = express()
-app.use(express.static('./public'))
 
+app.use(express.static('./public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
@@ -17,6 +17,8 @@ let header = ''
 let footer = ''
 const PAGES = require('./pages.json')
 const { status } = require('express/lib/response')
+
+let messageCounter = 0
 
 // Getting requests for images 
 const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
@@ -66,8 +68,10 @@ for (let address in PAGES) {
                     <link rel="stylesheet" type="text/css" href="/css/city.css">
                     <link rel="stylesheet" type="text/css" href="/css/404.css">
                     <link rel="stylesheet" type="text/css" href="/css/forum.css">
+                    <link rel="stylesheet" type="text/css" href="/css/login.css">
                     <script src="/js/rollout.js" defer></script>
                     <script src="/js/forum.js" defer></script>
+                    <script src="/js/login.js" defer></script>
                 </head>
                 <body>
                 ${header}
@@ -84,12 +88,24 @@ for (let address in PAGES) {
 
 app.post('/message', urlencodedParser, (req, res) => {
     res.sendStatus(200)
-    console.log(req.method)
-    console.log(req.headers)
-    console.log(req.header)
-    console.log(req.read())
-    console.log(req.body.message)
+    let message = req.body
+    message["time"] = new Date(Date.now()).toString()
 
+    const messageId = ('00000' + String(messageCounter).slice(-6))
+    messageCounter++
+
+    let messagesJSON = fs.readFileSync('./messages.json')
+    messagesJSON = JSON.parse(messagesJSON)
+    messagesJSON[messageId] = message
+
+    fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
+        if (err) {throw err}
+    })
+})
+
+app.post('/login', urlencodedParser, (req, res) => {
+    res.sendStatus(200)
+    console.log(req.body)
 })
 
 app.listen(port, host, () => {

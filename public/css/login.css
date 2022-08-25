@@ -1,0 +1,27 @@
+.popup {
+    opacity: 1;
+    width: min(95vw, 20rem);
+    position: fixed;
+    z-index: 10;
+    height: fit-content;
+    background-color: var(--clr-gray);
+    padding: 2em 1em;
+    border-radius: 8px;
+    inset: 0;
+    margin: auto;
+}
+
+.popup-container {
+    display: none;
+    background-color: #00000070;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+}
+
+.popup h2 {
+    font-size: 2rem;
+    color: var(--clr-accent);
+    font-weight: bold;
+}

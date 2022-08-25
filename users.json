@@ -1,0 +1,14 @@
+{
+    "user1" : {
+        "password" : 1234,
+        "e-mail" : "abc@gmail.com"
+    },
+    "user2" : {
+        "password" : 5678,
+        "e-mail" : "def@gmail.com"
+    },
+    "user3" : {
+        "password" : 9012,
+        "e-mail" : "ghi@gmail.com"
+    }
+}

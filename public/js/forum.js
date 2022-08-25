@@ -8,10 +8,8 @@ sendButton.onclick = async () => {
     const jsonBody = {   
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: {message}
+        body: `{"message" : "${message}"}`
     }
 
     await fetch( '/message', jsonBody)
-    console.log(jsonBody.body)
-    console.log(jsonBody.headers)
 }
