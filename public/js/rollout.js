@@ -4,7 +4,8 @@ const rollouts = document.getElementsByClassName('content-rollout')
 const rollout = () => {
     for (let i = 0; i < rollouts.length; i++) {
         rollouts[i].style.transition = 'all 300ms ease-in'
-        rollouts[i].style.height = 'fit-content'
+        rollouts[i].style.height = '400px'
+        rollouts[i].style.marginBottom = '2em'
     }
     for (let i = 0; i < moreButtons.length; i++) {
         moreButtons[i].innerText = 'LESS'
@@ -18,6 +19,7 @@ const rollin = () => {
     for (let i = 0; i < rollouts.length; i++) {
         rollouts[i].style.transition = 'all 300ms ease-in'
         rollouts[i].style.height = '0'
+        rollouts[i].style.marginBottom = '0'
     }
     for (let i = 0; i < moreButtons.length; i++) {
         moreButtons[i].innerText = 'MORE'
