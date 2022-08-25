@@ -25,3 +25,64 @@
     color: var(--clr-accent);
     font-weight: bold;
 }
+
+.wrong-input {
+    color: red;
+    outline: 1px solid red;
+    outline-offset: 4px;
+    border: 2px solid red;
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #FF000060,
+               inset 2px 2px 2px #24242440,
+               inset -2px -2px 2px #FF000060;
+}
+
+.wrong-input:hover {
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #FF000060,
+               inset 2px 3px 4px #24242450,
+               inset -4px -2px 4px #FF000060;
+}
+
+.correct-input {
+    color: green;
+    outline: 1px solid green;
+    outline-offset: 4px;
+    border: 2px solid green;
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #00FF0060,
+               inset 2px 2px 2px #24242440,
+               inset -2px -2px 2px #00FF0060;
+}
+
+.correct-input:hover {
+    box-shadow: 8px 2px 8px #000000,
+               -8px -2px 8px #00FF0060,
+               inset 2px 3px 4px #24242450,
+               inset -4px -2px 4px #00FF0060;
+}
+
+#wrong-password-text {
+    height: 0;
+    overflow: hidden;
+    color: red;
+    font-weight: bold;
+}
+#wrong-login-text {
+    height: 0;
+    overflow: hidden;
+    color: red;
+    font-weight: bold;
+}
+#correct-password-text {
+    height: 0;
+    overflow: hidden;
+    color: green;
+    font-weight: bold;
+}
+#correct-login-text {
+    height: 0;
+    overflow: hidden;
+    color: green;
+    font-weight: bold;
+}

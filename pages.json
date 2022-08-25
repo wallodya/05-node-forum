@@ -1,57 +1,64 @@
 {
     "/home" : {
+        "title" : "Home",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "title" : "Home",
+        "script" : "",
         "bigFooter" : true,
         "userOnly" : false
     },
     "/" : {
+        "title" : "Home",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "title" : "Home",
+        "script" : "",
         "bigFooter" : true,
         "userOnly" : false
     },
     "" : {
+        "title" : "Home",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "title" : "Home",
+        "script" : "",
         "bigFooter" : true,
         "userOnly" : false
     },
     "/forum" : {
+        "title" : "Forum",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/forum.html",
-        "title" : "Forum",
+        "script" : "",
         "bigFooter" : false,
         "userOnly" : false
     },
     "/london" : {
+        "title" : "London",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/london.html",
-        "title" : "London",
+        "script" : "",
         "bigFooter" : false,
         "userOnly" : false
     },
     "/paris" : {
+        "title" : "Paris",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/paris.html",
-        "title" : "Paris",
+        "script" : "",
         "bigFooter" : false,
         "userOnly" : false
     },
     "*" : {
+        "title" : "404",
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/404.html",
-        "title" : "404",
+        "script" : "",
         "bigFooter" : false,
         "userOnly" : false
     }
