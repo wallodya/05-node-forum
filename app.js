@@ -5,17 +5,18 @@ const http = require('http')
 const express = require('express')
 const res = require('express/lib/response')
 const fs = require('fs')
-const bodyParser =require('body-parser')
+// const bodyParser =require('body-parser')
 const urlencodedParser = express.urlencoded({extended: false})
 const app = express()
+app.use(express.static('./public'))
 
-// app.use(bodyParser.json())
-// app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 let header = ''
 let footer = ''
 const PAGES = require('./pages.json')
-const { Console } = require('console')
+const { status } = require('express/lib/response')
 
 // Getting requests for images 
 const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
@@ -82,7 +83,13 @@ for (let address in PAGES) {
 }
 
 app.post('/message', urlencodedParser, (req, res) => {
-    console.log(req.body)
+    res.sendStatus(200)
+    console.log(req.method)
+    console.log(req.headers)
+    console.log(req.header)
+    console.log(req.read())
+    console.log(req.body.message)
+
 })
 
 app.listen(port, host, () => {
