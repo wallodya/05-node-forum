@@ -13,6 +13,7 @@ app.use(express.static('./public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
+
 let header = ''
 let footer = ''
 const PAGES = require('./pages.json')
@@ -39,11 +40,14 @@ for (let address in PAGES) {
     app.get(address, (req, res) => {
         res.status(200)
 
+
+        // Generating header
         fs.readFile(PAGES[address]["header"], (err, data) =>{
             if (err) {throw err}
             header = data
         })
 
+        // Generating footer
         if (PAGES[address]["bigFooter"]) {
             fs.readFile('./public/html/big_footer.html', (err, data) => {
                 if (err) {throw err}
@@ -55,6 +59,15 @@ for (let address in PAGES) {
                 footer = data
             })
         }
+
+        //Generating list for required scripts
+        let scripts = ''
+        for (let i = 0; i < PAGES[address]["scripts"].length; i++) {
+            scripts += `<script src="${PAGES[address]["scripts"][i]}" defer></script>\n`
+            console.log(1)
+        }
+
+        // Generating page layout
         fs.readFile(PAGES[address]["content"], (err, data) => {
             if (err) { throw err}
             let page = `<!DOCTYPE html>
@@ -70,9 +83,7 @@ for (let address in PAGES) {
                     <link rel="stylesheet" type="text/css" href="/css/forum.css">
                     <link rel="stylesheet" type="text/css" href="/css/login.css">
                     <link rel="stylesheet" type="text/css" href="/css/home.css">
-                    <script src="/js/rollout.js" defer></script>
-                    <script src="/js/forum.js" defer></script>
-                    <script src="/js/login.js" defer></script>
+                    ${scripts}
                 </head>
                 <body>
                 ${header}
@@ -82,6 +93,7 @@ for (let address in PAGES) {
                 ${footer}
                 </body
                 </html>`
+            console.log('sending', address)
             res.send(page)
         })
     })

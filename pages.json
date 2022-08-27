@@ -4,7 +4,7 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "script" : "",
+        "scripts" : ["/js/login.js"],
         "bigFooter" : true,
         "userOnly" : false
     },
@@ -13,7 +13,7 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "script" : "",
+        "scripts" : ["/js/login.js"],
         "bigFooter" : true,
         "userOnly" : false
     },
@@ -22,7 +22,7 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/home.html",
-        "script" : "",
+        "scripts" : ["/js/login.js"],
         "bigFooter" : true,
         "userOnly" : false
     },
@@ -31,7 +31,8 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/forum.html",
-        "script" : "",
+        "scripts" : ["/js/login.js",
+                    "/js/forum.js"],
         "bigFooter" : false,
         "userOnly" : false
     },
@@ -40,7 +41,8 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/london.html",
-        "script" : "",
+        "scripts" : ["/js/login.js",
+                     "/js/rollout.js"],
         "bigFooter" : false,
         "userOnly" : false
     },
@@ -49,7 +51,8 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/paris.html",
-        "script" : "",
+        "scripts" : ["/js/login.js",
+                     "/js/rollout.js"],
         "bigFooter" : false,
         "userOnly" : false
     },
@@ -58,7 +61,7 @@
         "header" : "./public/html/header.html",
         "footer" : "./public/html/footer.html",
         "content": "./public/html/pages/404.html",
-        "script" : "",
+        "scripts" : ["/js/login.js"],
         "bigFooter" : false,
         "userOnly" : false
     }
