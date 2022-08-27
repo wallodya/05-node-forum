@@ -13,6 +13,7 @@
 
 .popup-container {
     display: none;
+    margin-top:
     background-color: #00000070;
     backdrop-filter: blur(8px);
     position: fixed;
@@ -63,24 +64,28 @@
 }
 
 #wrong-password-text {
+    /* margin-top: -0.5rem; */
     height: 0;
     overflow: hidden;
     color: red;
     font-weight: bold;
 }
 #wrong-login-text {
+    /* margin-top: -0.5rem; */
     height: 0;
     overflow: hidden;
     color: red;
     font-weight: bold;
 }
 #correct-password-text {
+    margin-top: -1rem;
     height: 0;
     overflow: hidden;
     color: green;
     font-weight: bold;
 }
 #correct-login-text {
+    margin-top: -1rem;
     height: 0;
     overflow: hidden;
     color: green;

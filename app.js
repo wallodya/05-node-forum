@@ -69,6 +69,7 @@ for (let address in PAGES) {
                     <link rel="stylesheet" type="text/css" href="/css/404.css">
                     <link rel="stylesheet" type="text/css" href="/css/forum.css">
                     <link rel="stylesheet" type="text/css" href="/css/login.css">
+                    <link rel="stylesheet" type="text/css" href="/css/home.css">
                     <script src="/js/rollout.js" defer></script>
                     <script src="/js/forum.js" defer></script>
                     <script src="/js/login.js" defer></script>
@@ -104,10 +105,23 @@ app.post('/message', urlencodedParser, (req, res) => {
 })
 
 app.post('/login', urlencodedParser, (req, res) => {
-    res.sendStatus(200)
-    console.log(req.body)
+    const clientLogin = req.body.login
+    const clientPassword = req.body.password
+    console.log(clientLogin, clientPassword)
+
+    let users = fs.readFileSync('./users.json')
+    users = JSON.parse(users)
+    if (!users.hasOwnProperty(clientLogin)) {
+        res.sendStatus(400)
+    } else if (clientPassword != users[clientLogin].password) {
+        res.sendStatus(401)
+    } else {
+        res.sendStatus(200)
+    }
+
+    // console.log(users)
 })
 
 app.listen(port, host, () => {
-    console.log(`Listening to ${host}, ${port}`)
+    console.log(`Listening to ${host}: ${port}`)
 })

@@ -162,6 +162,7 @@ footer {
     border-radius: 4px;
     background: none;
     background-color: var(--clr-gray);
+    text-transform: none;
 }
 
 footer .input-form {

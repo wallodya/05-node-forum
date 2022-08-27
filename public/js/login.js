@@ -1,3 +1,4 @@
+
 const loginButton = document.getElementById('login-button')
 const sendButtons = document.getElementsByClassName('send-button')
 const loginField = document.getElementById('login-field')
@@ -95,18 +96,44 @@ const sendData = async () => {
             body : JSON.stringify(userInput)
         }
         console.log(jsonBody)
-        await fetch('/login', jsonBody)
+        try {
+           const res = await fetch('/login', jsonBody)
+           console.log(res.status)
+           switch (res.status) {
+               case 400: {
+                   console.log('no such user')
+                   wrongLoginText.innerText = 'User doesn`t exist'
+                   markIncorrectField(loginField, true)
+                   break
+               }
+               case 401: {
+                   console.log('Wrong password')
+                   wrongPasswordText.innerText = 'Wrong password'
+                   markIncorrectField(passwordField, true) 
+                   break
+               }
+               case 200: {
+                   loginField.classList.add('correct-input')
+                   passwordField.classList.add('correct-input')
+                   correctLoginText.style.height = 'fit-content'
+                   correctPasswordText.style.height = 'fit-content'
+               }
+           }
+        } catch (err) {
+        }
 }
 
 const setDefaultLoginField = () => {
     loginField.setAttribute('class', 'neomorph')
     correctLoginText.style.height = '0'
+    wrongLoginText.innerText = 'Login incorrect'
     wrongLoginText.style.height = '0'
 }
 
 const setDefaultPasswordField = () => {
     passwordField.setAttribute('class', 'neomorph')
     correctPasswordText.style.height = '0'
+    wrongPasswordText.innerText = 'Wrong password format'
     wrongPasswordText.style.height = '0'
 }
 
@@ -116,11 +143,6 @@ for (let i = 0; i < sendButtons.length; i++) {
         checkFieldValue(passwordField)
         if (isLoginValid && isPasswordValid) {
             sendData()
-            loginField.classList.add('correct-input')
-            passwordField.classList.add('correct-input')
-            correctLoginText.style.height = 'fit-content'
-            correctPasswordText.style.height = 'fit-content'
-
         }
     }
 }
@@ -135,6 +157,18 @@ loginField.addEventListener('input', () => {
 
 passwordField.addEventListener('input', () => {
     setDefaultPasswordField()
+})
+
+loginField.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        sendData()
+    } 
+})
+
+passwordField.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        sendData()
+    } 
 })
 
 window.onclick = (event) => {
