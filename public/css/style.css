@@ -91,6 +91,13 @@ header a:hover::after {
     top: 0;
 }
 
+.content-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .neomorph {
     color: var(--clr-black);
     font-weight: bold;

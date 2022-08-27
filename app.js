@@ -64,8 +64,14 @@ for (let address in PAGES) {
         let scripts = ''
         for (let i = 0; i < PAGES[address]["scripts"].length; i++) {
             scripts += `<script src="${PAGES[address]["scripts"][i]}" defer></script>\n`
-            console.log(1)
         }
+
+        //Generating list for required styles
+        let styles = ''
+        for (let i = 0; i < PAGES[address]["styles"].length; i++) {
+            styles += `<link rel="stylesheet" type="text/css" href="${PAGES[address]["styles"][i]}">\n`
+        }
+        console.log(styles)
 
         // Generating page layout
         fs.readFile(PAGES[address]["content"], (err, data) => {
@@ -77,12 +83,7 @@ for (let address in PAGES) {
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>${PAGES[address]["title"]}</title>
-                    <link rel="stylesheet" type="text/css" href="/css/style.css">
-                    <link rel="stylesheet" type="text/css" href="/css/city.css">
-                    <link rel="stylesheet" type="text/css" href="/css/404.css">
-                    <link rel="stylesheet" type="text/css" href="/css/forum.css">
-                    <link rel="stylesheet" type="text/css" href="/css/login.css">
-                    <link rel="stylesheet" type="text/css" href="/css/home.css">
+                    ${styles}
                     ${scripts}
                 </head>
                 <body>
