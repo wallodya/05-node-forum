@@ -72,18 +72,7 @@
         "scripts" : ["/js/login.js",
                      "/js/rollout.js"],
         "bigFooter" : false,
-        "userOnly" : false
-    },
-    "*" : {
-        "title" : "404",
-        "header" : "./public/html/header.html",
-        "footer" : "./public/html/footer.html",
-        "content": "./public/html/pages/404.html",
-        "styles" : ["/css/style.css",
-                    "/css/404.css",
-                    "/css/login.css"],
-        "scripts" : ["/js/login.js"],
-        "bigFooter" : false,
-        "userOnly" : false
+        "userOnly" : true
     }
+    
 }

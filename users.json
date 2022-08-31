@@ -1,14 +1,22 @@
 {
+    "admin" : {
+        "password" : "adminpassword",
+        "userAccessLevel" : "admin",
+        "e-mail" : "admin@gmail.com"
+    },
     "user1" : {
         "password" : 1234,
+        "userAccessLevel" : "user",
         "e-mail" : "abc@gmail.com"
     },
     "user2" : {
         "password" : 5678,
+        "userAccessLevel" : "user",
         "e-mail" : "def@gmail.com"
     },
     "user3" : {
         "password" : 9012,
+        "userAccessLevel" : "user",
         "e-mail" : "ghi@gmail.com"
     }
 }

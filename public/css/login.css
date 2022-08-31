@@ -1,19 +1,46 @@
 .popup {
     opacity: 1;
     width: min(95vw, 20rem);
+    height: fit-content;
     position: fixed;
     z-index: 10;
-    height: fit-content;
     background-color: var(--clr-gray);
-    padding: 2em 1em;
+    padding: 3em 2em;
     border-radius: 8px;
     inset: 0;
     margin: auto;
+    animation-name: popup;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+input[type="text"], input[type="password"] {
+    color: var(--clr-white);
+    border-radius: 4px;
+    background: none;
+    background-color: var(--clr-gray);
+    text-transform: none;
+}
+
+@keyframes popup {
+    from {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .popup-container {
     display: none;
-    margin-top:
     background-color: #00000070;
     backdrop-filter: blur(8px);
     position: fixed;
@@ -22,7 +49,9 @@
 }
 
 .popup h2 {
+    margin-bottom: 2rem !important;
     font-size: 2rem;
+    margin-bottom: auto;
     color: var(--clr-accent);
     font-weight: bold;
 }
@@ -31,11 +60,41 @@
     color: red;
     outline: 1px solid red;
     outline-offset: 4px;
-    border: 2px solid red;
+    border: 1px solid red;
     box-shadow: 8px 2px 8px #000000,
                -8px -2px 8px #FF000060,
                inset 2px 2px 2px #24242440,
                inset -2px -2px 2px #FF000060;
+    animation-name: shake;
+    animation-duration: 10ms;
+    animation-iteration-count: 40;
+    animation-timing-function: ease-out;
+    margin-left: 0;
+}
+
+@keyframes shake {
+    from {
+        margin-top: -6px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    25% {
+        margin-left: -4px;
+        margin-right: 4px;
+    }
+    50% {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    75% {
+        margin-left: 4px;
+        margin-right: -4px;
+    }
+    to {
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 .wrong-input:hover {
@@ -49,11 +108,32 @@
     color: green;
     outline: 1px solid green;
     outline-offset: 4px;
-    border: 2px solid green;
+    border: 1px solid green;
     box-shadow: 8px 2px 8px #000000,
                -8px -2px 8px #00FF0060,
                inset 2px 2px 2px #24242440,
                inset -2px -2px 2px #00FF0060;
+    animation-name: correct-input;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes correct-input {
+    from {
+        outline: 4px solid green;
+        transform: scale(1);
+    }
+    50% {
+        outline: 2px solid green;
+        outline-offset: 6px;
+        transform: scale(1.01);
+    }
+    to {
+        outline: 1px solid green;
+        outline-offset: 4px;
+        transform: scale(1);
+    }
 }
 
 .correct-input:hover {
@@ -62,6 +142,8 @@
                inset 2px 3px 4px #24242450,
                inset -4px -2px 4px #00FF0060;
 }
+
+
 
 #wrong-password-text {
     /* margin-top: -0.5rem; */

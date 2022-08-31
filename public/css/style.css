@@ -91,6 +91,12 @@ header a:hover::after {
     top: 0;
 }
 
+#username-field {
+    color: var(--clr-white);
+    font-weight: bold;
+    margin-left: auto;
+}
+
 .content-container {
     position: relative;
     display: flex;
@@ -164,7 +170,7 @@ footer {
     gap: 1rem;
 }
 
-.input-form input {
+.input-form input[type="text"], input[type="password"] {
     color: var(--clr-white);
     border-radius: 4px;
     background: none;
@@ -175,4 +181,19 @@ footer {
 footer .input-form {
     opacity: .8;
     filter: blur(8px);
+}
+
+footer ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.big-footer-picture {
+    background: url(../img/footer_pic.png) no-repeat;
+    background-size: cover;
+    width: 400px;
+    aspect-ratio: 16/9;
+    box-shadow: inset 5px 5px 8px #00000080,
+                inset -5px -5px 8px #F7CE6840;
 }
