@@ -1,5 +1,5 @@
 <header>
-    <img src="/svg/logo.svg" alt="">
+    <img src="/svg/logo.svg">
     <a href="/home">
         Home
     </a>
@@ -9,13 +9,15 @@
     <a href="/london">
         London
     </a>
-    <a href="/paris">
-        Paris
+    <a id="paris-button">
+       Paris
     </a>
-    <div class="button-container"><button class="neomorph login-button" id="login-button">LOGIN</button></div>
+    <p id="header-username">
+    </p>
+    <div class="button-container"><button class="neomorph login-button" id="id-login-button">LOGIN</button></div>
 </header>
 
-<div class="popup-container" id="popup-background">
+<div class="popup-container" id="id-popup-container">
 <!-- <form class="input-form popup" id="popup-login">
     <h2>Login</h2>
     <input type="text" name="" placeholder="Login" class="neomorph" id="login-field">
@@ -27,11 +29,16 @@
     <input type="submit" class="neomorph send-button" id="login-button">
 </form> -->
 
-<form class="popup" action="/login" method="post" target="_parent">
+<form class="popup">
     <input type="text" name="login" class="neomorph" id="login-field" placeholder="Login" 
     pattern="^[A-z][A-z0-9\.\-]{3,19}$" title="Must be 4 characters or longer" required>
+    <p id="wrong-login-text">Login incorrect</p>
+    <p id="correct-login-text">Correct</p>
     <input type="password" name="password" class="neomorph" id="password-field" placeholder="Password" 
     pattern="^[A-z0-9]{4,19}$" title="Must be 4 characters or longer" required>
+    <p id="wrong-password-text">Password incorrect</p>
+    <p id="correct-password-text">Correct</p>
     <button type="submit" class="neomorph" id="submit-button">Submit</button>
 </form>
+
 </div>

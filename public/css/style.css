@@ -91,6 +91,14 @@ header a:hover::after {
     top: 0;
 }
 
+.link-disabled {
+    color: gray;
+}
+
+.link-disabled:hover::after {
+    top: 100%
+}
+
 #username-field {
     color: var(--clr-white);
     font-weight: bold;

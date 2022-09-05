@@ -7,7 +7,7 @@ const res = require('express/lib/response')
 const fs = require('fs')
 const urlencodedParser = express.urlencoded({extended: false})
 const cookieParser = require('cookie-parser')
-const sessions = require('express-session')
+// const sessions = require('express-session')
 const app = express()
 
 app.use(express.static('./public'))
@@ -15,14 +15,15 @@ app.use(express.static('./public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-const msInDay = 24 * 60 * 60 * 1000
-app.use(sessions ({
-    secret: "secretkey",
-    saveUninitialized: true,
-    cookie: {maxAge: msInDay},
-    resave: false
-}))
-let session
+// const msInDay = 24 * 60 * 60 * 1000
+// app.use(sessions ({
+//     name: "open_session",
+//     secret: "secretkey",
+//     saveUninitialized: true,
+//     cookie: {maxAge: msInDay},
+//     resave: true
+// }))
+// let session
 app.use(cookieParser())
 
 // const handlebars = require('express-handlebars')
@@ -49,23 +50,18 @@ const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
 
 const getPage = (address) => {
     app.get(address, (req, res) => {
-
+        console.dir(req.cookies)
         let isUser = false
         
-        session = req.session
+        // session = req.session
 
-        if (session.userid) {
+        if (req.cookies.login) {
             isUser = true
-        }
-
-        let scripts = ''
-        if (isUser) {
-            header = fs.readFileSync('./public/html/header_user.html')
-            scripts += `<script defer>const userName = "${session.userid}"</script>`
         } else {
-            header = fs.readFileSync('./public/html/header_guest.html')
+            isUser= false
         }
 
+        header = fs.readFileSync(PAGES[address]["header"])
 
         // console.log(address, 1)
         // if (!isUser && PAGES[address]["userOnly"]) {    
@@ -87,6 +83,7 @@ const getPage = (address) => {
         }
 
         //Generating tags for required scripts
+        let scripts = ''
         for (let i = 0; i < PAGES[address]["scripts"].length; i++) {
             scripts += `<script src="${PAGES[address]["scripts"][i]}" defer></script>\n`
         }
@@ -139,12 +136,14 @@ app.get(imageRegex, (req, res) => {
     })
 })
 
-app.get('/logout', (req, res) => {
-    console.log('logout')
-    req.session.destroy()
-    res.redirect(req.get('referer'))
-    console.log('logged out')
-})
+// app.get('/logout', (req, res) => {
+//     console.log('logout')
+//     // req.session.destroy()
+//     res.clearCookie("login")
+//     // res.redirect(req.get('referer'))
+//     // res.end()
+//     console.log('logged out')
+// })
 
 //Getting requests for urls
 for (let address in PAGES) {
@@ -180,15 +179,23 @@ app.post('/login', urlencodedParser, (req, res) => {
     users = JSON.parse(users)
 
     if (users.hasOwnProperty(clientLogin) && users[clientLogin].password == clientPassword) {
-        session = req.session
-        session.userid = clientLogin
-        console.log(req.session)
-        res.redirect(req.get('referer'))
-        console.log(200)
+        // session = req.session
+        // session.userid = clientLogin
+        // console.log(req.session)
+        // res.redirect(req.get('referer'))
+        clientData = {
+            login: clientLogin
+        }
+        res.cookie('login', clientLogin)
+        res.json({isAuthorised: true})
+        // res.sendStatus(200)
+        console.log('successful login')
     } else {
-        res.sendStatus(401)
+        res.json({isAuthorised: false})
+        // res.sendStatus(200)
     }
 })
+
 
 app.listen(port, host, () => {
     console.log(`Listening to ${host}: ${port}`)

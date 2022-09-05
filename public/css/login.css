@@ -40,12 +40,14 @@ input[type="text"], input[type="password"] {
 }
 
 .popup-container {
-    display: none;
+    transform: scale(0);
+    opacity: 0;
     background-color: #00000070;
     backdrop-filter: blur(8px);
     position: fixed;
     inset: 0;
     z-index: 9;
+    transition: opacity 200ms ease-in-out;
 }
 
 .popup h2 {
@@ -172,4 +174,12 @@ input[type="text"], input[type="password"] {
     overflow: hidden;
     color: green;
     font-weight: bold;
+}
+
+#header-username {
+    width: 0;
+    min-width: 0;
+    color: white;
+    font-weight: bold;
+    transition: width 500ms ease-in-out;
 }
