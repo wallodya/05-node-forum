@@ -40,8 +40,6 @@ const PAGES = require('./pages.json')
 const { status } = require('express/lib/response')
 
 
-let messageCounter = 0
-
 // let isUser = false
 // let userName = ''
 
@@ -50,7 +48,7 @@ const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
 
 const getPage = (address) => {
     app.get(address, (req, res) => {
-        console.dir(req.cookies)
+        // console.dir(req.cookies)
         let isUser = false
         
         // session = req.session
@@ -153,14 +151,21 @@ for (let address in PAGES) {
 // Managing post request from forum
 app.post('/message', urlencodedParser, (req, res) => {
     res.sendStatus(200)
+    let messageCounter = 1
     let message = req.body
+    console.log(message)
+
     message["time"] = new Date(Date.now()).toString()
-
-    const messageId = ('00000' + String(messageCounter).slice(-6))
-    messageCounter++
-
+    
     let messagesJSON = fs.readFileSync('./messages.json')
     messagesJSON = JSON.parse(messagesJSON)
+    
+    let lastMessageNumber = parseInt(Object.keys(messagesJSON)[Object.keys(messagesJSON).length - 1])
+    if (lastMessageNumber) {
+        messageCounter = lastMessageNumber + 1
+    }
+    const messageId = ('00000' + String(messageCounter)).slice(-6)
+    
     messagesJSON[messageId] = message
 
     fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
