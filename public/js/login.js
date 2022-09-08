@@ -44,8 +44,8 @@ const setHeader = () => {
         loginButton.innerText = 'LOGOUT'
         loginButton.onclick = () => {
             if (/.*\/paris/g.test(location.href)) {
-                console.log('page is for users only')
-                location.replace('http://www.debug.souta.ru')
+                location.href.replace(/.*\/paris/g, '/')
+                location.reload()
             }
             console.log('logout')
             document.cookie += ';expires=' + new Date(0).toUTCString()
