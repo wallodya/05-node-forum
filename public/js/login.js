@@ -22,8 +22,6 @@ const refreshCookies = () => {
     document.cookie.split(';').forEach((cookie) => {
         let[key,value] = cookie.split('=')
         cookies[key.trim()] = value
-        console.log(`Refreshing cookies`)
-        console.log(`Cookie:\n key: ${key}, value: ${value}\n`)
     })
 } 
 
@@ -45,17 +43,17 @@ const setHeader = () => {
         usernameField.innerText = `Your login: ${cookies.login}`
         loginButton.innerText = 'LOGOUT'
         loginButton.onclick = () => {
-            if (location.href == 'http://www.debug.souta.ru/paris') {
+            if (/.*\/paris/g.test(location.href)) {
                 console.log('page is for users only')
-                location.replace('http://www.debug.souta.ru/paris')
+                location.replace('http://www.debug.souta.ru')
             }
             console.log('logout')
             document.cookie += ';expires=' + new Date(0).toUTCString()
             refreshCookies()
             setHeader()
-            console.log(`Cookies after logout:`)
-            console.dir(cookies)
-            console.log('////')
+            if (/.*\/forum/g.test(location.href)) {
+                location.reload()
+            }
         }
     }
 }
@@ -169,8 +167,6 @@ const closePopup = () => {
 
 if (document.cookie) {
     refreshCookies()
-    console.log(`Cookies on page load:`)
-    console.dir(cookies)
 }
 
 setHeader()
@@ -187,24 +183,20 @@ submitButton.onclick = async (event) => {
       .then(data => {  
         if (data.isAuthorised) {
             refreshCookies()
-            console.log(`Cookies after login:`)
-            console.dir(cookies)
-            console.log('////')
             correctLoginText.style.height = 'fit-content'
             correctPasswordText.style.height = 'fit-content'
             loginField.classList.add('correct-input')
             passwordField.classList.add('correct-input')
             setHeader()
             setTimeout(() => {closePopup()}, 500)
+            if (/.*\/forum/g.test(location.href)) {
+                location.reload()
+            }
         } else {
             markIncorrectField(loginField, true)
             markIncorrectField(passwordField, true)
         }
     })
-    
-        // console.log(`Server response:`)
-        // console.log(res.json()["PromiseResult"])
-        // console.log(res.isAuthorised)
 
 }
 

@@ -2,6 +2,25 @@ const host = '62.113.97.215'
 const port = 80
 
 const http = require('http')
+const { Server } = require("socket.io")
+const io = new Server({
+    cors: {
+        origin: "*",
+        credentials: true
+    },
+    transports: ["websocket", "polling"],
+    cookie: true,
+    allowUpgrades: false
+})
+
+// const io = require('socket.io')(http, {
+//     cors: {
+//         origin: "*",
+//         methods: ["GET", "POST"],
+//         credentials: true,
+//         rejectUnauthorized: false
+//     }
+// })
 const express = require('express')
 const res = require('express/lib/response')
 const fs = require('fs')
@@ -14,34 +33,13 @@ app.use(express.static('./public'))
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-
-// const msInDay = 24 * 60 * 60 * 1000
-// app.use(sessions ({
-//     name: "open_session",
-//     secret: "secretkey",
-//     saveUninitialized: true,
-//     cookie: {maxAge: msInDay},
-//     resave: true
-// }))
-// let session
 app.use(cookieParser())
-
-// const handlebars = require('express-handlebars')
-
-// app.engine('handlebars', () => {handlebars()})
-
-// app.set('views', './html')
-// app.set('view engine', 'handlebars')
-
 
 let header = ''
 let footer = ''
 const PAGES = require('./pages.json')
 const { status } = require('express/lib/response')
-
-
-// let isUser = false
-// let userName = ''
+const { Socket } = require('socket.io')
 
 // Getting requests for images 
 const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
@@ -60,12 +58,6 @@ const getPage = (address) => {
         }
 
         header = fs.readFileSync(PAGES[address]["header"])
-
-        // console.log(address, 1)
-        // if (!isUser && PAGES[address]["userOnly"]) {    
-        //     res.redirect(301, '/')
-        // }
-        // console.log(address, 2)
 
         // Generating footer
         if (PAGES[address]["bigFooter"]) {
@@ -149,29 +141,73 @@ for (let address in PAGES) {
 }
 
 // Managing post request from forum
-app.post('/message', urlencodedParser, (req, res) => {
-    res.sendStatus(200)
-    let messageCounter = 1
-    let message = req.body
-    console.log(message)
+// app.post('/message', urlencodedParser, (req, res) => {
+//     res.sendStatus(200)
+//     let messageCounter = 1
+//     let message = req.body
+//     console.log(message)
 
-    message["time"] = new Date(Date.now()).toString()
+//     message["time"] = new Date(Date.now()).toString()
     
+//     let messagesJSON = fs.readFileSync('./messages.json')
+//     messagesJSON = JSON.parse(messagesJSON)
+    
+//     let lastMessageNumber = parseInt(Object.keys(messagesJSON)[Object.keys(messagesJSON).length - 1])
+//     if (lastMessageNumber) {
+//         messageCounter = lastMessageNumber + 1
+//     }
+//     const messageId = ('00000' + String(messageCounter)).slice(-6)
+    
+//     messagesJSON[messageId] = message
+
+//     fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
+//         if (err) {throw err}
+//     })
+// })
+
+
+
+io.on('connection', (socket) => {
+    console.log('user connected to socket')
     let messagesJSON = fs.readFileSync('./messages.json')
     messagesJSON = JSON.parse(messagesJSON)
-    
-    let lastMessageNumber = parseInt(Object.keys(messagesJSON)[Object.keys(messagesJSON).length - 1])
-    if (lastMessageNumber) {
-        messageCounter = lastMessageNumber + 1
+    for (let messageId in messagesJSON) {
+        io.emit('message', JSON.stringify(messagesJSON[messageId]))
     }
-    const messageId = ('00000' + String(messageCounter)).slice(-6)
-    
-    messagesJSON[messageId] = message
 
-    fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
-        if (err) {throw err}
+    socket.on('message', (message) => {
+        console.log(message)
+        
+        let messageCounter
+        let lastMessageNumber = parseInt(Object.keys(messagesJSON)[Object.keys(messagesJSON).length - 1])
+        console.log(`last message number: ${lastMessageNumber}`)           
+        lastMessageNumber
+            ? messageCounter = lastMessageNumber + 1 
+            : messageCounter = 1
+        const messageId = ('000000' + String(messageCounter)).slice(-6)
+        message = JSON.parse(message)
+        message["id"] = messageId
+        messagesJSON[messageId] = message
+        fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, "\n"), (err) => {
+            if (err) {throw err}
+        })
+
+        io.emit('message', JSON.stringify(message))
+    })
+
+    socket.on('deleteMessage', (messageId) => {
+        delete messagesJSON[messageId]
+        fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
+            if (err) {throw err}
+        })
+        io.emit('deleteMessage', messageId)
     })
 })
+
+io.on('connect_error', (err) => {
+    console.log(`Socket error: ${err}`)
+})
+
 
 //Managing login post requests
 app.post('/login', urlencodedParser, (req, res) => {
@@ -201,6 +237,7 @@ app.post('/login', urlencodedParser, (req, res) => {
     }
 })
 
+io.listen(6002)
 
 app.listen(port, host, () => {
     console.log(`Listening to ${host}: ${port}`)
