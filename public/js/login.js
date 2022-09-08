@@ -45,9 +45,9 @@ const setHeader = () => {
         usernameField.innerText = `Your login: ${cookies.login}`
         loginButton.innerText = 'LOGOUT'
         loginButton.onclick = () => {
-            if (location.href == 'http://www.debug.souta.ru/paris') {
+            if (location.href == 'http://forum.zerq.ru/paris' || location.href == 'http://www.forum.zerq.ru/paris' || location.href == 'http://zerq.ru/paris' || location.href == 'http://www.zerq.ru/paris') {
                 console.log('page is for users only')
-                location.replace('http://www.debug.souta.ru/paris')
+                location.replace('http://www.forum.zerq.ru/home')
             }
             console.log('logout')
             document.cookie += ';expires=' + new Date(0).toUTCString()
