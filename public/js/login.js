@@ -1,11 +1,9 @@
 
 const loginButton = document.getElementById('id-login-button')
-// const sendButtons = document.getElementsByClassName('send-button')
 const submitButton = document.getElementById('submit-button')
 const loginField = document.getElementById('login-field')
 const passwordField = document.getElementById('password-field')
 const popupContainer = document.getElementById('id-popup-container')
-// const popup = document.getElementById('popup-login')
 const wrongLoginText =document.getElementById('wrong-login-text')
 const wrongPasswordText =document.getElementById('wrong-password-text')
 const correctLoginText =document.getElementById('correct-login-text')
@@ -22,15 +20,13 @@ const refreshCookies = () => {
     document.cookie.split(';').forEach((cookie) => {
         let[key,value] = cookie.split('=')
         cookies[key.trim()] = value
-        console.log(`Refreshing cookies`)
-        console.log(`Cookie:\n key: ${key}, value: ${value}\n`)
     })
 } 
 
 const setHeader = () => {
     if(!cookies.login) {
         parisButton.classList.add('link-disabled')
-        parisButton.setAttribute('href', '')
+        parisButton.removeAttribute('href')
         usernameField.style.width = '0'
         usernameField.innerText = ''
         loginButton.innerText = 'LOGIN'
@@ -45,24 +41,24 @@ const setHeader = () => {
         usernameField.innerText = `Your login: ${cookies.login}`
         loginButton.innerText = 'LOGOUT'
         loginButton.onclick = () => {
-            if (location.href == 'http://forum.zerq.ru/paris' || location.href == 'http://www.forum.zerq.ru/paris' || location.href == 'http://zerq.ru/paris' || location.href == 'http://www.zerq.ru/paris') {
-                console.log('page is for users only')
-                location.replace('http://www.forum.zerq.ru/home')
+            if (/.*\/paris/g.test(location.href)) {
+                location.href.replace(/.*\/paris/g, '/')
+                location.reload()
             }
             console.log('logout')
             document.cookie += ';expires=' + new Date(0).toUTCString()
             refreshCookies()
             setHeader()
-            console.log(`Cookies after logout:`)
-            console.dir(cookies)
-            console.log('////')
+            if (/.*\/forum/g.test(location.href)) {
+                location.reload()
+            }
         }
     }
 }
 
 // //Assigning 'wrong-input' class to input field and showing/hiding warning labels
 // //depending on isIncorrect flag and changing the isLoginPossible flag
-markIncorrectField = (inputField, isIncorrect) => {
+const markIncorrectField = (inputField, isIncorrect) => {
     if (isIncorrect)    {
         inputField.classList.add('wrong-input')
         switch (inputField){ 
@@ -95,53 +91,6 @@ markIncorrectField = (inputField, isIncorrect) => {
     }
 }      
 
-
-// const sendData = async () => {
-//         console.log('sending data')
-//         userInput = {
-//             login : loginField.value,
-//             password : passwordField.value 
-//         }
-        
-//         const jsonBody = {   
-//             method: 'POST',
-//             headers: {'Content-Type': 'application/json'},
-//             body : JSON.stringify(userInput)
-//         }
-//         console.log(jsonBody)
-//         try {
-//            const res = await fetch('/login', jsonBody)
-//            console.log('sending data')
-//            console.log(res.status)
-//            switch (res.status) {
-//                case 401: {
-//                     wrongLoginText.innerText = 'Authentification failed'
-//                     wrongPasswordText.innerText = 'Authentification failed'
-//                     markIncorrectField(passwordField, true) 
-//                     markIncorrectField(loginField, true)
-//                     break
-//                }
-//                case 200: {
-//                     console.log(200)
-//                     loginField.classList.add('correct-input')
-//                     passwordField.classList.add('correct-input')
-//                     correctLoginText.style.height = 'fit-content'
-//                     correctPasswordText.style.height = 'fit-content'
-//                     setTimeout(() => {
-//                         closePopup()
-//                     }, 750)
-//                     setTimeout(() => {
-//                         location.reload()
-//                     }, 1000)
-                
-                   
-//                 //    setTimeout(() => {reloadPage(true)}, 750)
-//                }
-//            }
-//         } catch (err) {
-//         }
-// }
-
 const setDefaultLoginField = () => {
     loginField.setAttribute('class', 'neomorph')
     correctLoginText.style.height = '0'
@@ -165,12 +114,8 @@ const closePopup = () => {
     setDefaultPasswordField()
 }
 
-
-
 if (document.cookie) {
     refreshCookies()
-    console.log(`Cookies on page load:`)
-    console.dir(cookies)
 }
 
 setHeader()
@@ -187,24 +132,20 @@ submitButton.onclick = async (event) => {
       .then(data => {  
         if (data.isAuthorised) {
             refreshCookies()
-            console.log(`Cookies after login:`)
-            console.dir(cookies)
-            console.log('////')
             correctLoginText.style.height = 'fit-content'
             correctPasswordText.style.height = 'fit-content'
             loginField.classList.add('correct-input')
             passwordField.classList.add('correct-input')
             setHeader()
             setTimeout(() => {closePopup()}, 500)
+            if (/.*\/forum/g.test(location.href)) {
+                location.reload()
+            }
         } else {
             markIncorrectField(loginField, true)
             markIncorrectField(passwordField, true)
         }
     })
-    
-        // console.log(`Server response:`)
-        // console.log(res.json()["PromiseResult"])
-        // console.log(res.isAuthorised)
 
 }
 

@@ -2,55 +2,42 @@ const host = '62.113.109.122'
 const port = 80
 
 const http = require('http')
+const { Server } = require("socket.io")
+const io = new Server({
+    cors: {
+        origin: "*",
+        credentials: true
+    },
+    transports: ["websocket", "polling"],
+    cookie: true,
+    allowUpgrades: false
+})
+
 const express = require('express')
 const res = require('express/lib/response')
 const fs = require('fs')
 const urlencodedParser = express.urlencoded({extended: false})
 const cookieParser = require('cookie-parser')
-// const sessions = require('express-session')
 const app = express()
 
 app.use(express.static('./public'))
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-
-// const msInDay = 24 * 60 * 60 * 1000
-// app.use(sessions ({
-//     name: "open_session",
-//     secret: "secretkey",
-//     saveUninitialized: true,
-//     cookie: {maxAge: msInDay},
-//     resave: true
-// }))
-// let session
 app.use(cookieParser())
-
-// const handlebars = require('express-handlebars')
-
-// app.engine('handlebars', () => {handlebars()})
-
-// app.set('views', './html')
-// app.set('view engine', 'handlebars')
-
 
 let header = ''
 let footer = ''
 const PAGES = require('./pages.json')
 const { status } = require('express/lib/response')
-
-
-let messageCounter = 0
-
-// let isUser = false
-// let userName = ''
+const { Socket } = require('socket.io')
 
 // Getting requests for images 
 const imageRegex = new RegExp('^\/[A-z0-9]+\.((png)|(webp)|(jpg))$')
 
 const getPage = (address) => {
     app.get(address, (req, res) => {
-        console.dir(req.cookies)
+        // console.dir(req.cookies)
         let isUser = false
         
         // session = req.session
@@ -62,12 +49,6 @@ const getPage = (address) => {
         }
 
         header = fs.readFileSync(PAGES[address]["header"])
-
-        // console.log(address, 1)
-        // if (!isUser && PAGES[address]["userOnly"]) {    
-        //     res.redirect(301, '/')
-        // }
-        // console.log(address, 2)
 
         // Generating footer
         if (PAGES[address]["bigFooter"]) {
@@ -136,67 +117,88 @@ app.get(imageRegex, (req, res) => {
     })
 })
 
-// app.get('/logout', (req, res) => {
-//     console.log('logout')
-//     // req.session.destroy()
-//     res.clearCookie("login")
-//     // res.redirect(req.get('referer'))
-//     // res.end()
-//     console.log('logged out')
-// })
-
 //Getting requests for urls
 for (let address in PAGES) {
         getPage(address)
 }
 
-// Managing post request from forum
-app.post('/message', urlencodedParser, (req, res) => {
-    res.sendStatus(200)
-    let message = req.body
-    message["time"] = new Date(Date.now()).toString()
-
-    const messageId = ('00000' + String(messageCounter).slice(-6))
-    messageCounter++
-
+io.on('connection', (socket) => {
+    console.log(`\x1b[32m>~<\x1b[0mUser connected to socket.\nSocket id: \x1b[33m ${socket.id} \x1b[0m \n`)
     let messagesJSON = fs.readFileSync('./messages.json')
     messagesJSON = JSON.parse(messagesJSON)
-    messagesJSON[messageId] = message
+    for (let messageId in messagesJSON) {
+        socket.emit('message', JSON.stringify(messagesJSON[messageId]))
+    }
 
-    fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
-        if (err) {throw err}
+    socket.on('message', (message) => {
+        
+        let messageCounter
+        let lastMessageNumber = parseInt(Object.keys(messagesJSON)[Object.keys(messagesJSON).length - 1])          
+        lastMessageNumber
+        ? messageCounter = lastMessageNumber + 1 
+        : messageCounter = 1
+        const messageId = ('000000' + String(messageCounter)).slice(-6)
+        message = JSON.parse(message)
+        message["id"] = messageId
+        messagesJSON[messageId] = message
+        fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, "\n"), (err) => {
+            if (err) {throw err}
+        })
+
+        console.log('------------------')
+        console.log(`\x1b[36m@message \x1b[0m was recieved from \x1b[32m ${message["username"]}\x1b[0m: ${message["text"]}.\nMessage ID:\x1b[33m ${message["id"]} \x1b[0m`)
+        console.log('------------------\n')
+        
+        io.emit('message', JSON.stringify(message))
+    })
+    
+    socket.on('deleteMessage', (messageId) => {
+        delete messagesJSON[messageId]
+        fs.writeFile('./messages.json', JSON.stringify(messagesJSON, null, '\n'), (err) => {
+            if (err) {throw err}
+        })
+        io.emit('deleteMessage', messageId)
+        console.log('------------------')
+        console.log(`\x1b[36m@message \x1b[0m was deleted by\x1b[31m admin\x1b[0m.\nMessage ID:\x1b[33m ${messageId} \x1b[0m`)
+        console.log('------------------\n')
     })
 })
+
+io.on('connect_error', (err) => {
+    console.log(`Socket error: ${err}`)
+})
+
 
 //Managing login post requests
 app.post('/login', urlencodedParser, (req, res) => {
     const clientLogin = req.body.login
     const clientPassword = req.body.password
 
-    console.log(clientLogin, clientPassword)
-
     let users = fs.readFileSync('./users.json')
     users = JSON.parse(users)
 
     if (users.hasOwnProperty(clientLogin) && users[clientLogin].password == clientPassword) {
-        // session = req.session
-        // session.userid = clientLogin
-        // console.log(req.session)
-        // res.redirect(req.get('referer'))
         clientData = {
             login: clientLogin
         }
         res.cookie('login', clientLogin)
         res.json({isAuthorised: true})
-        // res.sendStatus(200)
-        console.log('successful login')
+
+        console.log('\x1b[32m#####################Successful login####################\x1b[0m')
+        console.log(`\x1b[32m#\x1b[0m   USERNAME: \x1b[34m${clientLogin}\x1b[0m`)
+        console.log(`\x1b[32m#\x1b[0m   PASSWORD: \x1b[35m${clientPassword}\x1b[0m`)
+        console.log('\x1b[32m#########################################################\x1b[0m\n')
+
     } else {
+        console.log(`\x1b[31m----x\x1b[34m${clientLogin}\x1b[0m tried to login with password \x1b[31m${clientPassword}\x1b[0m\n`)
         res.json({isAuthorised: false})
-        // res.sendStatus(200)
     }
 })
 
+io.listen(6002)
 
 app.listen(port, host, () => {
-    console.log(`Listening to ${host}: ${port}`)
+    console.log('\n\x1b[32m#########################################################\x1b[0m')
+    console.log(`\x1b[1m\x1b[32mListening to ${host}:${port}\x1b[0m`)
+    console.log('\x1b[32m#########################################################\x1b[0m\n')
 })

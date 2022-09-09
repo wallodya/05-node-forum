@@ -2,3 +2,71 @@
     flex-flow: row nowrap;
     margin: 2rem
 }
+
+.content-forum {
+    flex-flow: column nowrap;
+}
+
+.messages-container {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    height: fit-content;
+    width: 40%;
+    transition: height 300ms ease-in-out;
+}
+
+.message-container {
+    color: white;
+    font-size: 2rem;
+    display: grid;
+    grid-template-rows: 80% 20%;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(255, 255, 181);
+    color: var(--clr-black);
+    border-radius: 1rem;
+    padding: 0.5em;
+    margin-bottom: 2rem;
+    scale: 0;
+    transition: scale 300ms ease-out;
+}
+
+.message-text {
+    font-size: 2rem;
+    height: fit-content;
+    grid-row: 1;
+    grid-column: 1/ span 2;
+    font-weight: bold;
+}
+
+.message-username {
+
+    height: fit-content;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.message-time {
+    height: fit-content;
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: flex-end;
+}
+
+.forum-delete-button {
+    grid-column: 3;
+    grid-row: 1/span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 0.5em;
+    padding: 1em 2em;
+    margin-left: 1em;
+}
+
+.message-container-admin {
+    grid-template-columns: 1fr 1fr 0.2fr ;
+}

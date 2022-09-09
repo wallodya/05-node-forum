@@ -2,9 +2,16 @@
     <h1>Forum</h1>
 </div>
 
-<div class="content-container">
-    <div class="input-form message-input">
-        <input type="text" name="" class="neomorph" id="message-field">
-        <button class="neomorph" id="send-button">Send</button>
-    </div>
+<div class="content-container content-forum">
+    <form class="input-form message-input">
+        <input type="text" name="" class="neomorph" id="message-field" placeholder="Enter your message"
+        pattern=".{1,200}" title="mesasage does ont fit required format" required>
+        <input type="submit" class="neomorph" id="send-button">
+    </form>
+
+    <ul id="messages-list-id" class="messages-container">
+
+    </ul>
 </div>
+
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
