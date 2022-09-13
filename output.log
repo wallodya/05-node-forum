@@ -1,74 +1,494 @@
-Listening to 62.113.109.122: 80
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-admin adminpassword
-successful login
-user connected to socket
-user connected to socket
-user connected to socket
-user1 1234
-successful login
-user1 1234
-successful login
-user connected to socket
-admin adminpassword
-successful login
-user connected to socket
-user connected to socket
-{"username":"admin","text":"гкфдв","time":"2022-09-08T18:37:35.259Z"}
-last message number: 1
-{"username":"admin","text":"сарапул.нет","time":"2022-09-08T18:37:46.451Z"}
-last message number: 2
-{"username":"user2","text":"хелло","time":"2022-09-08T18:37:55.061Z"}
-last message number: 1
-{"username":"user2","text":"хелло","time":"2022-09-08T18:37:56.610Z"}
-last message number: 2
-{"username":"user2","text":"хелло","time":"2022-09-08T18:37:57.301Z"}
-last message number: 3
-{"username":"admin","text":"привет из ижевска","time":"2022-09-08T18:38:14.179Z"}
-last message number: 3
-{"username":"admin","text":"привет из ижевска","time":"2022-09-08T18:38:15.899Z"}
-last message number: 4
-user3 9012
-successful login
-user connected to socket
-user connected to socket
-user connected to socket
-{"username":"user3","text":"привет из москвы","time":"2022-09-08T18:39:04.750Z"}
-last message number: 5
-admin adminpassword
-successful login
-user connected to socket
-user connected to socket
-user1 1234
-successful login
-user connected to socket
-user connected to socket
-{"username":"user1","text":"mozga","time":"2022-09-08T18:42:22.370Z"}
-last message number: 5
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user1 1234
-successful login
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
-user connected to socket
+
+[32m#########################################################[0m
+[1m[32mListening to 62.113.109.122:80[0m
+[32m#########################################################[0m
+
+[32m#####################Successful login####################[0m
+[32m#[0m   USERNAME: [34muser1[0m
+[32m#[0m   PASSWORD: [35m1234[0m
+[32m#########################################################[0m
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m NVh9BDUsXKCC3HTGAAAB [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 6EYowYkGwbPD-oYaAAAD [0m 
+
+------------------
+[36m@message [0m was recieved from [32m user1[0m: aaa.
+Message ID:[33m 000018 [0m
+------------------
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m oQMJxBsD4nxVbTLqAAAF [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m zpPJo_wvxWtUlnPIAAAH [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m UOzgsJufnMDk74mAAAAJ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m bq6kwLmj_I6rkDUbAAAL [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m aMTvNtnjnDeMNtHgAAAN [0m 
+
+[32m#####################Successful login####################[0m
+[32m#[0m   USERNAME: [34muser1[0m
+[32m#[0m   PASSWORD: [35m1234[0m
+[32m#########################################################[0m
+
+[32m#####################Successful login####################[0m
+[32m#[0m   USERNAME: [34muser1[0m
+[32m#[0m   PASSWORD: [35m1234[0m
+[32m#########################################################[0m
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m -SH6xsxQ3pb2G9ZtAAAP [0m 
+
+------------------
+[36m@message [0m was recieved from [32m user1[0m: Низкие облкак межали по серому небу.
+Message ID:[33m 000019 [0m
+------------------
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m PeorBJqG_OIpx44tAAAR [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m MilaorjLd7YBu32rAAAT [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 9O2YIjSqWIbEDTdYAAAV [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m CCZadTeAHOhiTKNtAAAX [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m gP0d2ZMz0Sitn7QwAAAZ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m RKQmV09X1ZuhlFMcAAAb [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m v3ONeMjYEmgewJGgAAAd [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 0mRhWlmrjQnGolSSAAAf [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m rj8Njnrt67sQoqLtAAAh [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m pqNQ3Oy4jud9AQ1yAAAj [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m m9fiR0psShEvZuFbAAAl [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m H9MIZYRGQJJXApuJAAAn [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m Iu5BbI8BK5g4fQi7AAAp [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m aRAnxSblJSHwPNZXAAAr [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m CgfShonkHNf396OUAAAt [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m QDcu9KuGXhr2bMblAAAv [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m Yqfp6TINOiJ4O7QoAAAx [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m SBUEhASr9cC0TYKWAAAz [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m IAB3DBiT94AAZMArAAA1 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m z3AGQiHS7rsK798VAAA3 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m zewGAH6CA7DytdLqAAA5 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 52rVSJpMME8u6HmkAAA7 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m rFeT0CklDhC4-1YQAAA9 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m YUhHAg7eowRomId8AAA_ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m fjpdK9NnV_Qz8139AABB [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m X0y6cAlxzOpGueacAABD [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m pEAO7R3Pmv4e4Z9zAABF [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 2XuJvOJwMivnwxSCAABH [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m mzH7vwJXikh4qtJiAABJ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 3nigpm8qPJpCgu-tAABL [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m F49QGuG-O90gyq4YAABN [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m mVCjEIbqEqC6kWFJAABP [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m xjYxRJ32GgqPzJCoAABR [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m B6SxLb4IIxEI3TYmAABT [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m M2mBn_U18armAAzGAABV [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m SlI4ab8OVK5RigTsAABX [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m kaMbrgj8PAoSBloBAABZ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m XfksFBXD7FK7_HXLAABb [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m l4GZfWwVg3HKdADSAABd [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 7AJw5AqOJW_H8FTxAABf [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m AcTmIzOiat2rAsNSAABh [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m loNYVDepK8vFKr2yAABj [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m xi9Gkmrzmv0MdmbvAABl [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m KZRN7xTsComCxQt_AABn [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m wAdWTvCwIl3DPl4GAABp [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m Ezrn8_fT6-XccIzGAABr [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m I8_WDbJ4FDY4xbzKAABt [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m QpgE30iu7502t9BYAABv [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m syjGGc0IQshiyRGWAABx [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m bNq_wO6VQuA9OtaMAABz [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m ZNwYJniv7lCEScX5AAB1 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m I8qDDgYM1QRNCL0DAAB3 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m CKFpnPg7PdipmJiIAAB5 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m zaDX1qqIt67VsrADAAB7 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m jLFBrD4tR5B7Q02lAAB9 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m IE86ty9-N8zYRGv0AAB_ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m spziYvuA5AdW7EG1AACB [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m XbJGsrQ9sv43I_VqAACD [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 4mwF1dJOMmnGdvzxAACF [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 7wndVIFqwzR7ma2fAACH [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 9uwPcNzh0ciFcgKNAACJ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 2gWWjqn6nUSVVB4xAACL [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m vJpavW6noLZuIG7QAACN [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m G0yYnoFpvMzMD86CAACP [0m 
+
+------------------
+[36m@message [0m was recieved from [32m user1[0m: sfbb.
+Message ID:[33m 000020 [0m
+------------------
+
+------------------
+[36m@message [0m was recieved from [32m user1[0m: sfbb.
+Message ID:[33m 000021 [0m
+------------------
+
+------------------
+[36m@message [0m was recieved from [32m user1[0m: sfbb.
+Message ID:[33m 000022 [0m
+------------------
+
+[31m----x[34madmin[0m tried to login with password [31madminpasswqrd[0m
+
+[32m#####################Successful login####################[0m
+[32m#[0m   USERNAME: [34muser1[0m
+[32m#[0m   PASSWORD: [35m1234[0m
+[32m#########################################################[0m
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m rareDWTwxaUX9mnbAACR [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m nqJQjDA18PMB-7AtAACT [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m hRcc7SpgEfiuWSs-AACV [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m iwgM3gwBHb5sPasOAACX [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m prBCXWAJMJvKko4XAACZ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m AiJ2bI6vQgLpMQCMAACb [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m k6gIgc4gLm2rFfvDAACd [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m pcbXsDsDWMuteDXjAACf [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m ec7ReQfxZJueh8b0AACh [0m 
+
+[31m----x[34mundefined[0m tried to login with password [31muser[0m
+
+[31m----x[34mundefined[0m tried to login with password [31m1234[0m
+
+[31m----x[34mundefined[0m tried to login with password [31madmin[0m
+
+[31m----x[34mundefined[0m tried to login with password [31m1234[0m
+
+[31m----x[34mundefined[0m tried to login with password [31mpassword[0m
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m CXOKeXgjvr7mVAZwAACj [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m xpJ4SeD73bR5pg6wAACl [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m KgeFokRW9P98uENnAACn [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m cQKgp4D-Ho5BGAobAACp [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m lC6BFJKLfokAzJlaAACr [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m W9xPAghUrxX8ZLgoAACt [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m KVcEDj7PZUzAgMFjAACv [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 5t0zACC6fbc26oy-AACx [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m NYoeLaAg_tq7jgQhAACz [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m KUAbty72rBN5kjDoAAC1 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m b4P4aJqnjX98MlOvAAC3 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m WLVysufYfNQhaAJ9AAC5 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m POEUt5ql6KqzZa_ZAAC7 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m eztwqX3Mpn2G9bISAAC9 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m bsYkptpAOENJc2S8AAC_ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m pAyfVuT9y7QUx5KDAADB [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 3TmQzCFmWPVfWKJ2AADD [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m DeImSV7-f5BcDzcWAADF [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m rNvn2jeuVziSn1E5AADH [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m xqWrIAvGMfzU5PgwAADJ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m V6qvKmUUJoD5NojYAADL [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m PDFFKR2VklhmRgrAAADN [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m S0YFWcJesx2ksDmAAADP [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m -PS7oxinxXR6XOsgAADR [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m VfAbQPtWB9PJdKPIAADT [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 6E9dX1svgqpmwP8dAADV [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m D0gCLe_0Wp0sI2NpAADX [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m jMITD7rl3WEn0d8FAADZ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m DC5Vqjzv7IiX-E5nAADb [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m SWrvSy8G-b0mSrmvAADd [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m h9sW0rpcVrFiIkb6AADf [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m I56_bP16qrweS4I8AADh [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m kp3RPWmw6jXMmgiyAADj [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m zQi4kvlI5O_9eUF4AADl [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m uSrqXG1NipCZTCk6AADn [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 0UoSN_dDyBumZcELAADp [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m oVTzqJw6hvEw86wIAADr [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m mVwYBC-jjEENEcj9AADt [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m CiQQnEyy_YyeJH0vAADv [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m qwCRtt_ZnII6cUIaAADx [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m P9613sWHLFX2TIOQAADz [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m eQ-P7hWtGcXKi2lpAAD1 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m ZosoIsxLr0mxLPrGAAD3 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m K-_2TrBLw6jwouGHAAD5 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m lLgnZmXirJ3bHVqRAAD7 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 3QDq1kmWTL4caE89AAD9 [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m tlttZ5B9_9MbLe-ZAAD_ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m nfvjmZgFBc_u2gkfAAEB [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m _SfS1DoE4A31ktksAAED [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m Fo67X6E1A_BWocLNAAEF [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m gT6HE93q9dZ-G2uOAAEH [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m KHvWJyF--xT7BlOGAAEJ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m owvf47dDpkPKSlNMAAEL [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 1czB7ER7rwUzBMqTAAEN [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 6ZoJ_cjfvEDrTvzBAAEP [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m BJGyubiz2yrNaFNdAAER [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m fNm7kxn-OblRgaQtAAET [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m Pb1anx9iCOL0I1X1AAEV [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m 1NGv2ng7pODQ3v1vAAEX [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m BmnMwy5w8qrOfKxaAAEZ [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m xX7V0a1EwY1QZStAAAEb [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m tlHkgDzltypAlcTJAAEd [0m 
+
+[32m>~<[0mUser connected to socket.
+Socket id: [33m gnMBkDpFqtHj5Y_pAAEf [0m 
+
