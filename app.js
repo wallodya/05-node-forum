@@ -1,4 +1,4 @@
-console.log('main test 1')
+
 const host = '62.113.109.122'
 const port = 80
 
