@@ -1,4 +1,7 @@
-
+console.log('main test 1')
+console.log(1)
+console.log(3)
+console.log(3)
 const host = '62.113.109.122'
 const port = 80
 
